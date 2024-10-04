@@ -64,11 +64,11 @@ int partitionArray(int array[], int left, int right, const string& prefix)
 	cout << prefix << "|  피벗 " << pivot << "을(를) index "
 		<< left << " ~ " << right << "사이로 분할" << endl;
 	cout << prefix << "|  분할할배열: ";
-	cout << "(" << pivot << ")";                    // 피벗 출력
-	printArrayRange(array, low, high);              // 오른쪽 부분 배열 출력
+	cout << "(" << pivot << ")";             // 피벗 출력
+	printArrayRange(array, low, high);       // 오른쪽 부분 배열 출력
 	cout << endl;
 
-	int lastSwapLow = -1, lastSwapHigh = -1;        // 교환된 요소 위치 저장
+	int lastSwapLow = -1, lastSwapHigh = -1; // 교환된 요소 위치 저장
 
 	// low가 high보다 작거나 같을 때까지 반복합니다.
 	while (low <= high)
