@@ -64,26 +64,26 @@ int partitionArray(int array[], int left, int right, const string& prefix)
 	cout << prefix << "|  피벗 " << pivot << "을(를) index "
 		<< left << " ~ " << right << "사이로 분할" << endl;
 	cout << prefix << "|  분할할배열: ";
-	cout << "(" << pivot << ")";                 // 피벗 출력
-	printArrayRange(array, low, high);           // 오른쪽 부분 배열 출력
+	cout << "(" << pivot << ")";                    // 피벗 출력
+	printArrayRange(array, low, high);              // 오른쪽 부분 배열 출력
 	cout << endl;
 
-	int lastSwapLow = -1, lastSwapHigh = -1;     // 교환된 요소 위치 저장
+	int lastSwapLow = -1, lastSwapHigh = -1;        // 교환된 요소 위치 저장
 
 	// low가 high보다 작거나 같을 때까지 반복합니다.
 	while (low <= high)
 	{
-		while (low <= right && array[high] > pivot)// 피벗보다 큰 값을 찾습니다.
+		while (low <= right && array[high] > pivot) // 피벗보다 큰 값을 찾습니다.
 			high -= 1;
 
-		while (low <= high && array[low] <= pivot) // 피벗보다 작은 값을 찾습니다.
+		while (low <= high && array[low] <= pivot)  // 피벗보다 작은 값을 찾습니다.
 			low += 1;
 
-		if (low <= high)                           // low와 high의 값을 교환합니다.
+		if (low <= high)                            // low와 high의 값을 교환합니다.
 		{
 			swapElements(&array[low], &array[high]);
 
-			lastSwapLow  = low;  // 교환된 위치 저장
+			lastSwapLow  = low;                     // 교환된 위치 저장
 			lastSwapHigh = high;
 
 			// 교환된 위치에 화살표 추가
@@ -99,8 +99,8 @@ int partitionArray(int array[], int left, int right, const string& prefix)
 			cout << endl;
 
 			cout << prefix <<  "|  교환후배열: ";
-			cout << "(" << pivot << ")";                // 피벗 출력
-			printArrayRange(array, left + 1, right);    // 오른쪽 부분 배열 출력
+			cout << "(" << pivot << ")";              // 피벗 출력
+			printArrayRange(array, left + 1, right);  // 오른쪽 부분 배열 출력
 			cout << endl;
 
 			
@@ -110,14 +110,14 @@ int partitionArray(int array[], int left, int right, const string& prefix)
 		}
 	}
 	cout << prefix << "└─ Pivot 교환: " << array[left] << " ↔ " << array[high] << endl;
-	swapElements(&array[left], &array[high]);      // 피벗과 high의 값을 교환하여 피벗을 적절한 위치에 놓습니다.
+	swapElements(&array[left], &array[high]);    // 피벗과 high의 값을 교환하여 피벗을 적절한 위치에 놓습니다.
 
 	cout << prefix << "분할된배열: ";
 	if (left < high)
-		printArrayRange(array, left, high - 1); // 왼쪽 부분 배열 출력
-	cout << "(" << pivot << ")";                // 피벗 출력
+		printArrayRange(array, left, high - 1);  // 왼쪽 부분 배열 출력
+	cout << "(" << pivot << ")";                 // 피벗 출력
 	if (high < right)
-		printArrayRange(array, high + 1, right);    // 오른쪽 부분 배열 출력
+		printArrayRange(array, high + 1, right); // 오른쪽 부분 배열 출력
 	cout << endl << endl;
 	
 	return high;
@@ -134,10 +134,10 @@ void quickSort(int array[], int left, int right, const string& prefix = "")
 		int index = partitionArray(array, left, right, prefix + "|  "); // 배열을 분할하고 피벗의 최종 위치를 받습니다.
 
 		cout << prefix << "|  ├─ 왼쪽 부분 정렬 호출: left=" << left << ", right=" << index - 1 << endl;
-		quickSort(array, left, index - 1, prefix + "|  |  ");             // 피벗의 왼쪽 부분 배열을 정렬합니다.
+		quickSort(array, left, index - 1, prefix + "|  |  ");           // 피벗의 왼쪽 부분 배열을 정렬합니다.
 
 		cout << prefix << "│  └─ 오른쪽 부분 정렬 호출: left=" << index + 1 << ", right=" << right << endl;
-		quickSort(array, index + 1, right, prefix + "|    ");             // 피벗의 오른쪽 부분 배열을 정렬합니다.
+		quickSort(array, index + 1, right, prefix + "|    ");           // 피벗의 오른쪽 부분 배열을 정렬합니다.
 	}
 	else if (left == right)
 	{
@@ -154,7 +154,7 @@ void insertSort(int array[])
 	// 두 번째 요소부터 마지막 요소까지 순회합니다.
 	for (int currentIndex = 1; currentIndex < ARRAYSIZE; currentIndex++)
 	{
-		temp = array[currentIndex];                       // 현재 정렬할 요소를 임시로 저장합니다.
+		temp = array[currentIndex];                      // 현재 정렬할 요소를 임시로 저장합니다.
 
 		cout << "<삽입할 값 " << temp << "을(를) 정렬된 부분 [0-" << currentIndex - 1
 			<< "] index에 삽입>" << endl;
@@ -162,18 +162,18 @@ void insertSort(int array[])
 		for (sortedIndex = currentIndex - 1; sortedIndex >= 0
 			&& array[sortedIndex] > temp; sortedIndex--) // 정렬된 부분을 순회하며 삽입 위치를 찾습니다.
 		{
-			array[sortedIndex + 1] = array[sortedIndex];  // 요소를 오른쪽으로 이동합니다.
+			array[sortedIndex + 1] = array[sortedIndex]; // 요소를 오른쪽으로 이동합니다.
 
 			cout << "요소 " << array[sortedIndex] << "을(를) index "
 				<< sortedIndex + 1 << "으로 이동함" << endl;
 		}
 
-		array[sortedIndex + 1] = temp;                    // 적절한 위치에 현재 요소를 삽입합니다.
+		array[sortedIndex + 1] = temp;                   // 적절한 위치에 현재 요소를 삽입합니다.
 		cout << "값 " << temp << "을(를) index "
 			<< sortedIndex + 1 << "에 삽입함"
 			<< endl;
 		cout << "현재 배열: ";
-		printArray(array, ARRAYSIZE);                     // 배열의 각 삽입 단계가 완료 될 때마다 출력합니다.
+		printArray(array, ARRAYSIZE);                    // 배열의 각 삽입 단계가 완료 될 때마다 출력합니다.
 		cout << endl;
 		cout << "----------" << endl;
 	}
@@ -188,7 +188,7 @@ int main()
 	cout << "최종 배열: ";
 	printArray(array1, ARRAYSIZE);
 	cout << endl;
-	cout << "----------------------------------------" << endl;
+	cout << "--------------------------------------- " << endl;
 
 	cout << endl;
 	cout << "---------------삽입정렬-----------------" << endl;
