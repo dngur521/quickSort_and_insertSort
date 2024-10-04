@@ -103,8 +103,6 @@ int partitionArray(int array[], int left, int right, const string& prefix)
 			printArrayRange(array, left + 1, right);  // 오른쪽 부분 배열 출력
 			cout << endl;
 
-			
-
 			low += 1;
 			high -= 1;
 		}
